@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+p {
+    padding: 5px;
+    color: white;
+}
+
+.mainBox {
+    width: 700px;
+    height: 1000px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.mainBox h2 {
+    color: white;
+}
+
+.promptBox {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+}
+
+.promptBox p {
+    color: black;
+    font-size: 20px;
+    margin-right: auto;
+    transform: translateX(10px)
+}
+
+textarea {
+    width: 90%;
+    height: 200px;
+    outline: none;
+    background-color: rgb(220, 220, 220);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.promptBox button {
+    width: 80px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 10px;
+    color: white;
+    margin-left: auto;
+    transform: translateX(-10px);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.responseBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.responseBox h2 {
+    align-self: flex-start;
+    margin: 0;
+}
+.mainBox * {
+    margin: 10px;
+}
+/* 모바일쿼리 */
+@media screen and (max-width: 500px) {
+    .mainBox {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+        margin: 0;
+    }
+    .mainBox * {
+        margin: 10px;
+    }
+    .desc{
+        font-size:12px;
+    }
+    .promptBox {
+        width: 85%;
+        height: auto;
+        min-height: 250px;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .promptBox p {
+        font-size: 16px;
+        transform: none;
+        padding: 0 5px;
+    }
+
+    textarea {
+        width: 100%;
+        font-size: 16px;
+        height: 150px;
+    }
+
+    .promptBox button {
+        transform: none;
+        margin-right: 5px;
+    }
+
+    .responseBox {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .responseBox h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        padding: 0 5px;
+    }
+}
