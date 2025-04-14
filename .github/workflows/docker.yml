@@ -29,3 +29,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: peterseo9503/love-frontend:latest
+
+      - name: 🚁 EC2에 자동 ssh 접속하여 deploy.sh 실행
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ubuntu/frontend
+            chmod +x deploy.sh
+            ./deploy.sh

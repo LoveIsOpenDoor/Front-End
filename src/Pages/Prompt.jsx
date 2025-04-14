@@ -41,7 +41,7 @@ const Prompt = () => {
 
   const requestData = async () => {
     if (!textValues.trim()) {
-      alert("문제 내용을 입력해주세요!");
+      alert("상담담 내용을 입력해주세요!");
       return;
     }
 
