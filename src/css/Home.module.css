@@ -1,54 +1,197 @@
+/* font-family: "Chakra Petch", sans-serif; */
+/* font-family: "Gowun Dodum", sans-serif; */
+:root {
+  --eng-font: "Chakra Petch", sans-serif;
+  --kor-font: "Gowun Dodum", sans-serif;
+  --backGr-color: #2d2d2d;
+  --font-color: #EFECEC;
+  --point-color: #ffc1cc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* background-color: var(--backGr-color); */
+  overflow: hidden !important;
+  background-image: url("../../public/images/home.png");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 1rem;
-    text-align: center;
-    font-family: "Pretendard", sans-serif;
+  font-family: var(--kor-font);
+  max-width: 600px;
+  height: 90vh;
+  padding: 3rem 3rem;
+  text-align: center;
+}
+
+/* 메인 Love is an open door */
+.title {
+  margin-top: 20%;
+  font-size: 3rem;
+  color: var(--font-color);
+  font-family: var(--eng-font);
+  margin-bottom: 1rem;
+}
+
+/* 설명글 */
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.featureCardWrapper {
+  display: flex;
+  position: relative;
+  /* background-color: #ff3366; */
+  height: 10rem;
+  /* 적당한 높이로 조정 */
+  overflow: hidden;
+}
+
+.featureCard {
+  color: var(--font-color);
+  position: absolute;
+  width: 100%;
+  animation: slideUp 0.8s ease-out;
+  -webkit-animation: slideUp 0.8s ease-out;
+}
+
+.featureCard h2 {
+  font-family: var(--kor-font);
+  color: var(--font-color);
+  margin: 1rem;
+}
+
+.cta {
+  margin-top: 2rem;
+}
+
+.loginBtn {
+  font-family: var(--kor-font);
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid rgba(0, 153, 255, 0.4);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease-in-out, color 0.4s;
+  z-index: 0;
+  box-shadow: 0 0 8px rgba(0, 153, 255, 0.4);
+}
+
+.loginBtn::before {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: conic-gradient(from 0deg,
+      transparent,
+      rgba(0, 200, 255, 0.6),
+      transparent);
+  animation: slowShine 6s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  border-radius: 50%;
+}
+
+.loginBtn:hover::before {
+  opacity: 1;
+}
+
+.loginBtn:hover {
+  background-color: rgba(0, 0, 50, 0.6);
+  color: #ffffff;
+  border-color: rgba(0, 255, 255, 0.6);
+}
+
+@keyframes slowShine {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
   }
-  
+
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+    height: auto;
+  }
+
   .title {
-    font-size: 2.8rem;
-    color: #ff6699;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-top: 25%;
   }
-  
+
   .subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-  }
-  
-  .features {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    font-size: 1rem;
+    color: #ccc;
     margin-bottom: 2rem;
   }
-  
-  .featureCard {
-    background: #fff0f5;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  .featureCardWrapper {
+    height: 8rem;
   }
-  
-  .cta {
-    margin-top: 2rem;
+
+  .featureCard h2 {
+    font-size: 1.2rem;
   }
-  
+
   .loginBtn {
-    background-color: #ff6699;
-    color: white;
-    font-size: 1.1rem;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
   }
-  
-  .loginBtn:hover {
-    background-color: #ff3366;
+
+  .loginBtn::before {
+    width: 300%;
+    height: 300%;
   }
+
+  .cta {
+    margin-top: 1.5rem;
+  }
+}

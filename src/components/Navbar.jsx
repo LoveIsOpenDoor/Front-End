@@ -21,20 +21,31 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.leftLinks}>
-        <Link to="/" className={styles.link}>Home</Link>
-        <Link to="/prompt" className={styles.link}>Prompt</Link>
-        <Link to="/consultList" className={styles.link}>ConsultList</Link>
+        <Link to="/" className={styles.link}>
+          Home
+        </Link>
+        <Link to="/prompt" className={styles.link}>
+          Prompt
+        </Link>
+        <Link to="/consultList" className={styles.link}>
+          ConsultList
+        </Link>
       </div>
 
       <div className={styles.rightActions}>
         {isLoggedIn ? (
           <>
-            <span className={styles.greeting}>{userId}님 안녕하세요 😊</span>
-            <button onClick={handleLogout} className={styles.logoutBtn}>로그아웃</button>
+            <span className={styles.greeting}>{userId}님 안녕하세요</span>
+            <button onClick={handleLogout} className={styles.logoutBtn}>
+              로그아웃
+            </button>
           </>
         ) : (
-          <button onClick={() => navigate("/login")} className={styles.loginBtn}>
-            로그인하기
+          <button
+            onClick={() => navigate("/login")}
+            className={styles.loginBtn}
+          >
+            로그인
           </button>
         )}
       </div>

@@ -10,8 +10,15 @@ const Prompt = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState("");
+  const [descIndex, setDescIndex] = useState(0);
 
   const navigate = useNavigate();
+
+  const descMessages = [
+    '"연애 전문가 🤖 AI와 함께하는 스마트한 상담"',
+    '"연애의 고민, 🤖 AI가 해결해 드립니다!"',
+    '"사랑에 대한 궁금증, 🤖 AI가 친절히 답해드립니다!"',
+  ];
 
   useEffect(() => {
     const check = async () => {
@@ -20,12 +27,17 @@ const Prompt = () => {
       setAuthLoading(false);
 
       const name = localStorage.getItem("userId");
-      if (name) {
-        setUserId(name);
-      }
+      if (name) setUserId(name);
     };
     check();
   }, [navigate]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDescIndex((prev) => (prev + 1) % descMessages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const requestData = async () => {
     if (!textValues.trim()) {
@@ -38,19 +50,20 @@ const Prompt = () => {
     const beforeText = textValues;
     setTextValues("답변을 작성중입니다...");
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACK_END_URL}/api/chat`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: userId,
-          question: textValues,
-        }),
-      });
-      if (!response.ok) {
-        throw new Error("API 요청 실패");
-      }
+      const response = await fetch(
+        `${process.env.REACT_APP_BACK_END_URL}/api/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userId,
+            question: textValues,
+          }),
+        }
+      );
+      if (!response.ok) throw new Error("API 요청 실패");
 
       const data = await response.json();
       setResponseData(data);
@@ -66,23 +79,22 @@ const Prompt = () => {
     <div className={styles.container}>
       {!authLoading ? (
         <div className={styles.mainBox}>
-          <h1>{userId}님 환영합니다 💌</h1>
-          <div className={styles.desc}>
-            <p>"연애 전문가 🤖 AI와 함께하는 스마트한 상담"</p>
-            <p>"연애의 고민, 🤖 AI가 해결해 드립니다!"</p>
-            <p>"사랑에 대한 궁금증, 🤖 AI가 친절히 답해드립니다!"</p>
+          <h1>{userId}님 환영합니다</h1>
+          <div className={styles.descWrapper}>
+            <p key={descIndex} className={styles.animatedDesc}>
+              {descMessages[descIndex]}
+            </p>
           </div>
 
           <div className={styles.promptBox}>
             <label>상담내용</label>
             <textarea
+              placeholder="당신의 고민을 들려주세요..."
               value={textValues}
               onChange={(e) => {
                 const text = e.target.value;
                 if (!loading) {
                   setTextValues(text);
-                } else {
-                  setTextValues("답변작성중...");
                 }
               }}
             />
@@ -91,9 +103,13 @@ const Prompt = () => {
             </button>
           </div>
 
-          <div className={styles.responseBox}>
-            <h3>상담 결과 :</h3>
-            {loading ? "답변작성중..." : responseData && <p>{responseData.answer}</p>}
+          <div className={styles.responseSection}>
+            <label>상담결과</label>
+            <div className={styles.responseBox}>
+              {loading
+                ? "답변작성중..."
+                : responseData && <p>{responseData.answer}</p>}
+            </div>
           </div>
 
           {error && <p className={styles.errorMessage}>에러 : {error}</p>}
