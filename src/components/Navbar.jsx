@@ -40,6 +40,7 @@ const Navbar = () => {
               로그아웃
             </button>
           </>
+          
         ) : (
           <button
             onClick={() => navigate("/login")}
