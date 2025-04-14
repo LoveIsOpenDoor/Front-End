@@ -28,7 +28,7 @@ const Login = () => {
       alert("로그인 성공!");
       navigate("/prompt");
     } catch (err) {
-      alert("로그인 실패: " + (err.response?.data?.message || err.message));
+      alert("로그인 실패: " + (err.response?.data?.error || err.message));
     }
   };
 
