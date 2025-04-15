@@ -54,35 +54,40 @@
 
 ## 🗂️ 폴더 구조
 
-📦 root/
- ┣ 📂src/                       # 소스 코드 루트 디렉터리
- ┃ ┣ 📂components/             # 재사용 가능한 공통 컴포넌트
- ┃ ┃ ┗ 📜Navbar.jsx            # 상단 네비게이션 바 컴포넌트
- ┃ ┣ 📂css/                   # 모든 스타일 파일(CSS Modules + Global CSS)
- ┃ ┃ ┣ 📜ConsultList.css       # 상담 목록 페이지 전용 스타일
- ┃ ┃ ┣ 📜Home.module.css       # 홈 페이지 전용 스타일
- ┃ ┃ ┣ 📜Login.module.css      # 로그인 페이지 전용 스타일
- ┃ ┃ ┣ 📜Navbar.module.css     # 네비게이션 전용 스타일
- ┃ ┃ ┣ 📜Prompt.module.css     # AI 상담 페이지 전용 스타일
- ┃ ┃ ┗ 📜Signup.module.css     # 회원가입 페이지 전용 스타일
- ┃ ┣ 📂Pages/                # 라우터로 연결되는 주요 페이지들
- ┃ ┃ ┣ 📜ConsultList.jsx       # 사용자 상담 내역 조회/삭제 페이지
- ┃ ┃ ┣ 📜Home.jsx              # 메인 소개 페이지
- ┃ ┃ ┣ 📜Login.jsx             # 로그인 페이지
- ┃ ┃ ┣ 📜Prompt.jsx            # AI 상담 페이지 (GPT API 연결)
- ┃ ┃ ┗ 📜Signup.jsx            # 회원가입 페이지
- ┃ ┣ 📂utils/                # 유틸 함수 및 공용 기능
- ┃ ┃ ┗ 📜checkAuth.js          # 인증 여부 확인 함수 (JWT 기반 로그인 상태 확인)
- ┃ ┣ 📜App.js                # 전체 라우팅 구성 및 페이지 연결
- ┃ ┣ 📜index.css            # 글로벌 스타일
- ┃ ┗ 📜index.js             # React 앱 진입점 (ReactDOM.render 위치)
- ┣ 📂public/                 # 정적 파일 저장 폴더
- ┣ 📂.github/               # GitHub Actions 등 워크플로우 파일 저장소
- ┃ ┗ 📂workflows/
- ┃   ┗ 📜docker.yml              # GitHub Actions CI/CD 파이프라인 설정 파일
- ┣ 📜Dockerfile             # 프론트엔드용 Docker 이미지 빌드 설정
- ┣ 📜.gitignore             # Git에서 제외할 파일 목록
- ┗ 📜README.md              # 프로젝트 소개 문서
+📁 프로젝트 파일 구조 및 설명
+경로	설명
+src/	프론트엔드 소스 코드 루트 디렉터리
+src/App.js	전체 라우팅 구성 (React Router)
+src/index.js	React 앱의 진입점
+src/index.css	글로벌 스타일 파일
+📂 Pages
+경로	설명
+src/Pages/Home.jsx	메인 소개 페이지
+src/Pages/Login.jsx	로그인 기능 페이지
+src/Pages/Signup.jsx	회원가입 페이지
+src/Pages/Prompt.jsx	AI 연애 상담 기능 페이지
+src/Pages/ConsultList.jsx	사용자 상담 기록 조회 및 삭제 페이지
+📂 components
+경로	설명
+src/components/Navbar.jsx	상단 네비게이션 바 컴포넌트
+📂 utils
+경로	설명
+src/utils/checkAuth.js	인증 상태 확인 유틸 함수 (로그인 체크 등)
+📂 css
+경로	설명
+src/css/Home.module.css	홈 페이지 전용 스타일
+src/css/Login.module.css	로그인 페이지 전용 스타일
+src/css/Signup.module.css	회원가입 페이지 전용 스타일
+src/css/Prompt.module.css	상담 입력/결과 페이지 스타일
+src/css/ConsultList.css	상담 기록 페이지 글로벌 스타일
+src/css/Navbar.module.css	네비게이션 스타일
+🗂 기타 구성
+경로	설명
+public/	정적 리소스 (배경 이미지 등)
+.github/workflows/ci.yml	GitHub Actions용 CI/CD 설정
+Dockerfile	프론트엔드 앱용 Docker 이미지 빌드 설정
+.gitignore	Git에서 제외할 파일/폴더 설정
+README.md	프로젝트 소개 및 문서화 파일
 
 ---
 
