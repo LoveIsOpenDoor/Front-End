@@ -3,7 +3,7 @@
 :root {
   --main-pink: #ff4d88;
   --main-bg: rgba(255, 255, 255, 0.05);
-  --glass-blur: blur(10px);
+  --glass-blur: blur(15px);
   --card-radius: 16px;
   --kor-font: "Gowun Dodum", sans-serif;
 }
@@ -36,6 +36,10 @@ body {
   gap: 5px;
   text-align: center;
   height: auto;
+  -webkit-border-radius: var(--card-radius);
+  -moz-border-radius: var(--card-radius);
+  -ms-border-radius: var(--card-radius);
+  -o-border-radius: var(--card-radius);
 }
 
 .mainBox h1 {
@@ -52,10 +56,11 @@ body {
 .animatedDesc {
   animation: slideUp 0.8s ease-out;
   font-size: 1rem;
-  color: #ccc;
+  color: #e2e2e2;
   margin: 0;
   line-height: 1.5;
   font-weight: bold;
+  -webkit-animation: slideUp 0.8s ease-out;
 }
 
 @keyframes slideUp {
