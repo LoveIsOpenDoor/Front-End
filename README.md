@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# 💘 AI 연애 상담 웹서비스
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 연애 고민, 더 이상 혼자 고민하지 마세요!  
+> AI에게 사랑 이야기를 들려주면, 따뜻하고 진심 어린 답변을 드립니다.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🧠 프로젝트 소개
 
-### `npm start`
+이 프로젝트는 연애 고민을 AI와 상담할 수 있는 웹서비스입니다.  
+회원 가입 및 로그인 후, 사용자는 AI에게 자신의 연애 고민을 털어놓고 답변을 받을 수 있으며, 이전 상담 기록도 저장 및 조회할 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌐 주요 기능
 
-### `npm test`
+| 기능 | 설명 |
+|------|------|
+| 🔐 회원가입 및 로그인 | 사용자의 아이디와 비밀번호를 통한 인증 |
+| 🧑‍💬 AI 연애 상담 | 자연어 기반으로 연애 고민 입력 → AI가 답변 제공 |
+| 📝 상담 내역 관리 | 나의 연애 히스토리를 저장하고 불러오기 가능 |
+| 🌈 네온 감성 UI | 세련되고 감성적인 반응형 디자인 적용 |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🖼️ 주요 화면
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **홈페이지**  
+  메인 소개와 기능 소개 → 로그인 or 시작하기 버튼
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **로그인 / 회원가입 페이지**  
+  세련된 네온 감성 UI, 폼 유효성 검사 포함
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Prompt (상담 입력)**  
+  고민 내용을 입력하면 AI가 답변 생성
 
-### `npm run eject`
+- **ConsultList (상담 내역)**  
+  내가 입력했던 질문과 AI의 답변 리스트 형태로 제공  
+  각 항목 삭제 기능 포함
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ 사용 기술
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| 영역 | 기술 |
+|------|------|
+| 프론트엔드 | React (with React Router), CSS Modules |
+| 스타일 | 네온 UI, Glassmorphism, 반응형 디자인 (600px 이하 대응) |
+| 인증 및 상태 관리 | localStorage 기반 로그인 상태 유지 |
+| 서버 통신 | Axios + REST API (백엔드는 별도 Express 서버와 연결됨) |
+| 배포 | Docker 기반 배포, GitHub Actions 기반 CI/CD |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🗂️ 폴더 구조
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+📦 root/
+ ┣ 📂src/                       # 소스 코드 루트 디렉터리
+ ┃ ┣ 📂components/             # 재사용 가능한 공통 컴포넌트
+ ┃ ┃ ┗ 📜Navbar.jsx            # 상단 네비게이션 바 컴포넌트
+ ┃ ┣ 📂css/                   # 모든 스타일 파일(CSS Modules + Global CSS)
+ ┃ ┃ ┣ 📜ConsultList.css       # 상담 목록 페이지 전용 스타일
+ ┃ ┃ ┣ 📜Home.module.css       # 홈 페이지 전용 스타일
+ ┃ ┃ ┣ 📜Login.module.css      # 로그인 페이지 전용 스타일
+ ┃ ┃ ┣ 📜Navbar.module.css     # 네비게이션 전용 스타일
+ ┃ ┃ ┣ 📜Prompt.module.css     # AI 상담 페이지 전용 스타일
+ ┃ ┃ ┗ 📜Signup.module.css     # 회원가입 페이지 전용 스타일
+ ┃ ┣ 📂Pages/                # 라우터로 연결되는 주요 페이지들
+ ┃ ┃ ┣ 📜ConsultList.jsx       # 사용자 상담 내역 조회/삭제 페이지
+ ┃ ┃ ┣ 📜Home.jsx              # 메인 소개 페이지
+ ┃ ┃ ┣ 📜Login.jsx             # 로그인 페이지
+ ┃ ┃ ┣ 📜Prompt.jsx            # AI 상담 페이지 (GPT API 연결)
+ ┃ ┃ ┗ 📜Signup.jsx            # 회원가입 페이지
+ ┃ ┣ 📂utils/                # 유틸 함수 및 공용 기능
+ ┃ ┃ ┗ 📜checkAuth.js          # 인증 여부 확인 함수 (JWT 기반 로그인 상태 확인)
+ ┃ ┣ 📜App.js                # 전체 라우팅 구성 및 페이지 연결
+ ┃ ┣ 📜index.css            # 글로벌 스타일
+ ┃ ┗ 📜index.js             # React 앱 진입점 (ReactDOM.render 위치)
+ ┣ 📂public/                 # 정적 파일 저장 폴더
+ ┣ 📂.github/               # GitHub Actions 등 워크플로우 파일 저장소
+ ┃ ┗ 📂workflows/
+ ┃   ┗ 📜docker.yml              # GitHub Actions CI/CD 파이프라인 설정 파일
+ ┣ 📜Dockerfile             # 프론트엔드용 Docker 이미지 빌드 설정
+ ┣ 📜.gitignore             # Git에서 제외할 파일 목록
+ ┗ 📜README.md              # 프로젝트 소개 문서
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍💻 개발자
+이정임 (Jomim2)	프론트엔드 개발 & UI/UX 디자인
