@@ -75,10 +75,10 @@ const ConsultList = () => {
           lists.map((item, i) => (
             <div key={item.id} className="consult-card">
               <div className="consult-question">
-                <strong>💌 질문 {i + 1}:</strong> {item.question}
+                <strong>💌 질문: </strong> {item.question}
               </div>
               <div className="consult-answer">
-                <strong>💡 답변:</strong> {item.answer}
+                <strong>💡 답변: </strong> {item.answer}
               </div>
               <div className="consult-date">
                 작성일: {formatDate(item.create_at)}
